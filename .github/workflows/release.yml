@@ -95,6 +95,6 @@ jobs:
         with:
           files: artifacts/**/*
           generate_release_notes: true
-          draft: ${{ !startsWith(github.ref, 'refs/tags/') }}
+          draft: true
           tag_name: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || format('draft-{0}', github.run_number) }}
           name: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || format('Draft build {0} (test only)', github.run_number) }}
