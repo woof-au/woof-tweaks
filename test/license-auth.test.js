@@ -94,3 +94,21 @@ test('approved browser login reports update recovery without repeated license re
   assert.equal(result.signedIn,false);assert.equal(pending.length,0);assert.equal(license.entitled(),false);
  }finally{license.stop();}
 });
+
+test('service outage is visible without losing the saved account or extending offline access',async()=>{
+ const s=store(),events=[];
+ license.init({store:s,deviceId:()=> 'device',osId:()=> 'win32',version:'1.2.3',isPackaged:false,emit:(_ch,d)=>events.push(d)});
+ try{
+  s.set('session',{raw:'outage-token',name:'Tester'});
+  pending.push({body:{signedIn:true,plan:'plus',authLease:proof('plus')}});
+  await license.refresh();
+  pending.push({status:503,body:{ok:false,error:'Services offline.'}});
+  await license.refresh();
+  assert.equal(license.session().offline,true);assert.match(license.session().error,/Services offline/);
+  assert.equal(license.session().hasAccount,true);assert.equal(license.authenticated(),true);
+  assert.equal(events.at(-1).offline,true);
+  mono+=900001;assert.equal(license.authenticated(),false);assert.equal(license.session().hasAccount,true);
+  pending.push({body:{signedIn:true,plan:'plus',authLease:proof('plus')}});
+  await license.refresh();assert.equal(license.session().offline,false);assert.equal(license.session().error,null);
+ }finally{license.stop();}
+});

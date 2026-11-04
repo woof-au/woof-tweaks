@@ -12,9 +12,10 @@ const SITE = process.env.WOOF_SITE || 'https://woof-services.stream';
 const lease = require('./session-lease').createVerifier();
 let refreshTimer = null, expiryTimer = null, lastState = '';
 let updateRequired = false, minimumVersion = null;
+let servicesOffline = false, servicesError = null;
 const entitled = () => authenticated() && cachedPlan() !== 'free';
 const authenticated = () => !!getToken() && !!lease.claims();
-function publishState() { const s = session(), key = JSON.stringify([s.signedIn, s.name, s.plan, s.updateRequired, s.minimumVersion]); if (key !== lastState) { lastState = key; emit('auth:state', { status: 'refreshed', ...s }); } }
+function publishState() { const s = session(), key = JSON.stringify([s.signedIn, s.name, s.plan, s.updateRequired, s.minimumVersion, s.offline, s.error]); if (key !== lastState) { lastState = key; emit('auth:state', { status: 'refreshed', ...s }); } }
 
 let store = null;
 let deviceId = () => 'unknown';
@@ -29,6 +30,7 @@ function init(opts) {
   installationReporter?.stop();
   if (refreshTimer) clearInterval(refreshTimer); if (expiryTimer) clearInterval(expiryTimer); lease.clear();
   updateRequired = false; minimumVersion = null; lastState = '';
+  servicesOffline = false; servicesError = null;
   refreshTimer = setInterval(() => refresh().catch(() => {}), 60000); refreshTimer.unref();
   expiryTimer = setInterval(publishState, 1000); expiryTimer.unref();
   if (opts.isPackaged) { installationReporter = createReporter({ post, deviceId, osId, version }); installationReporter.start(); }
@@ -70,6 +72,7 @@ async function refresh() {
     try {
       const r = await post('/api/app/license', { token, deviceId: deviceId(), platform: osId(), appVersion: version });
       if (token !== getToken()) return session();
+      if(r.status<500){servicesOffline=false;servicesError=null;}
       const b = r.body || {};
       if (r.status === 426) {
         lease.clear(); updateRequired = true;
@@ -77,15 +80,17 @@ async function refresh() {
         return session();
       }
       if (r.status === 401 || r.status === 403) { clearSession(); return session(); }
-      if (r.status !== 200) throw new Error(`Account check failed (${r.status})`);
+      if (r.status !== 200) throw new Error(r.status >= 500 ? 'Services offline. Your account and settings are kept. Please try again shortly.' : `Account check failed (${r.status})`);
       if (b.signedIn === false) { clearSession(); emit('auth:state', { status: 'signed-out', reason: 'Your login expired. Please log in again.' }); return session(); }
       if (b.signedIn !== true || !lease.accept(b.authLease, 'tweaks', deviceId())) throw new Error('Could not verify this account. Connect to the internet and try again.');
       updateRequired = false; minimumVersion = null;
+      servicesOffline = false; servicesError = null;
       if (isPlan(b.plan)) { store.set('plan', b.plan); store.set('planCheckedAt', Date.now()); }
       if (b.name) { const s = store.get('session'); if (s) store.set('session', { ...s, name: b.name }); }
       store.set('lastOnlineAt', Date.now());
       return session();
     } catch (e) {
+      servicesOffline = true; servicesError = 'Services offline or unreachable. Your account and settings are kept. Reconnect to continue; verified access lasts up to 15 minutes.';
       return { ...session(), offline: true, error: e.message };
     }
   })();
@@ -94,10 +99,11 @@ async function refresh() {
 
 function session() {
   const s = store.get('session');
-  return { updateRequired, minimumVersion, signedIn: authenticated(), entitled: entitled(), purchaseRequired: authenticated() && !entitled(), hasAccount: !!getToken(), offlineRemainingMs: lease.remaining(), name: (s && s.name) || null, plan: cachedPlan(), checkedAt: store.get('planCheckedAt', 0) || null };
+  return { updateRequired, minimumVersion, offline: servicesOffline, error: servicesError, signedIn: authenticated(), entitled: entitled(), purchaseRequired: authenticated() && !entitled(), hasAccount: !!getToken(), offlineRemainingMs: lease.remaining(), name: (s && s.name) || null, plan: cachedPlan(), checkedAt: store.get('planCheckedAt', 0) || null };
 }
 
 function clearSession() {
+  servicesOffline = false; servicesError = null;
   lease.clear(); updateRequired = false; minimumVersion = null;
   store.delete('session');
   store.set('plan', 'free');

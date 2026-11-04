@@ -110,7 +110,7 @@ function renderShell() {
       ${plan() === 'ultra' || plan() === 'lifetime' ? '' : `<button class="nav upgrade" data-go="upgrade">${icon('crown')}<span>${t('nav.upgrade')}</span></button>`}
       <div class="community-nav"><button class="nav" data-action="community">${icon('external')}<span>Discord community</span></button><button class="nav" data-action="support">${icon('book')}<span>Get support</span></button></div>
     </nav>
-    <main class="main" id="main" tabindex="-1"></main>
+    <section class="main-workspace" style="display:flex;flex-direction:column;min-width:0;min-height:0"><aside id="woof-service-notice" role="status" hidden style="padding:12px 18px;background:#382619;color:#ffe3b2;border-bottom:1px solid #7a5633;font-size:14px"></aside><main class="main" id="main" tabindex="-1" style="flex:1;min-height:0"></main></section>
     <footer class="footer" id="footer"></footer>`;
   renderFooter();
 }
@@ -144,6 +144,11 @@ export function go(page, params = {}) {
 export function render() {
   const main = document.getElementById('main');
   if (!main) return;
+  const serviceNotice = document.getElementById('woof-service-notice');
+  if (serviceNotice) {
+    serviceNotice.hidden = !S.session.offline;
+    serviceNotice.textContent = S.session.offline ? (S.session.error || 'Services offline. Your account and settings are kept. Please try again shortly.') : '';
+  }
   const p = PAGES[S.page];
   const recovery = updateRecovery(S.session, S.app && S.app.update);
   if (recovery && S.page !== 'backups') { main.innerHTML = recovery; return; }
