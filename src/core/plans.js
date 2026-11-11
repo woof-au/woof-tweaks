@@ -1,8 +1,9 @@
 'use strict';
-// Plan names and order. All purchased plans are permanent; free is an unpaid internal state.
+// Plan names and order. Woof Tweaks is free: every signed-in account gets every tweak ('lifetime').
+// The other tiers remain only so older accounts/grants keep resolving.
 const PLAN_ORDER = ['free', 'good', 'plus', 'pro', 'ultra', 'lifetime'];
-const PLAN_NAMES = { free: 'No plan', good: 'Good', plus: 'Plus', pro: 'Pro', ultra: 'Ultra', lifetime: 'Max' };
-const PLAN_PRICES = { free: 'Not purchased', good: '$5 once', plus: '$10 once', pro: '$15 once', ultra: '$30 once', lifetime: '$100 once' };
+const PLAN_NAMES = { free: 'No plan', good: 'Good', plus: 'Plus', pro: 'Pro', ultra: 'Ultra', lifetime: 'All features' };
+const PLAN_PRICES = { free: 'Sign in', good: 'Free', plus: 'Free', pro: 'Free', ultra: 'Free', lifetime: 'Free' };
 // Real feature bullets — kept identical to the website's pricing page (lib/catalog.ts TWEAK_PLANS).
 const PLAN_FEATURES = {
   free: [],

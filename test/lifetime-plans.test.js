@@ -13,7 +13,7 @@ test('each purchased tier adds features and Max includes the complete catalogue'
  }
  assert.equal(previous,Object.keys(tiers.TWEAKS).length);
 });
-test('all advertised purchased prices are one-time and start at $5',()=>{
- assert.equal(PLAN_PRICES.good,'$5 once');assert.equal(PLAN_PRICES.lifetime,'$100 once');
- for(const p of PLAN_ORDER.filter(p=>p!=='free'))assert.match(PLAN_PRICES[p],/once$/);
+test('Woof Tweaks is free: no plan shows a price',()=>{
+ for(const p of PLAN_ORDER.filter(p=>p!=='free'))assert.equal(PLAN_PRICES[p],'Free');
+ assert.doesNotMatch(Object.values(PLAN_PRICES).join(' '),/\$|USD|once/);
 });

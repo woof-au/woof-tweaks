@@ -200,7 +200,7 @@ function registerIPC(ipcMain, _store, winGetter) {
 
   const unlocked = new Set(['app:state','app:openLogs','app:openBackups','app:openExternal','app:relaunch','auth:start','auth:cancel','auth:logout','auth:refresh','tweaks:list','tweaks:revert','tweaks:revertAll','backups:get','backups:export','history:get','games:restoreMinecraftOptions','update:check','update:download','update:install','monitor:stop']);
   const h = (ch, fn) => ipcMain.handle(ch, async (e, ...args) => {
-    try { if (!unlocked.has(ch) && !license.entitled()) return { ok: false, code: 'auth', error: 'Sign in and purchase a lifetime Tweaks plan from $5 USD once. Reconnect when the 15-minute offline session ends.' }; return await fn(...args); } catch (err) {
+    try { if (!unlocked.has(ch) && !license.entitled()) return { ok: false, code: 'auth', error: 'Sign in with your free Woof account to use Woof Tweaks. Reconnect when the 15-minute offline session ends.' }; return await fn(...args); } catch (err) {
       if (err && err.code === 'BUSY') return { ok: false, busy: true, error: 'Another change is still running — try again in a moment.' };
       log.error(`${ch} failed`, { e: err && err.message });
       return { ok: false, error: (err && err.message) || 'Something went wrong' };

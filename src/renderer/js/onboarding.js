@@ -44,7 +44,7 @@ export function onboarding() {
     }
     if (st.step === 2) body = `<h1 class="center" style="font-size:26px">How far should we go?</h1><p class="muted center" style="margin:6px 0 16px">You can change any single tweak afterwards.</p>
       <div class="grid g3">${[['safe', 'shield', 'Safe', 'Only zero-risk tweaks. Nothing that needs a restart.'], ['balanced', 'scale', 'Balanced', 'Recommended. Safe + moderate tweaks that help most PCs.'], ['max', 'rocket', 'Max', 'Everything for FPS and latency your plan includes. Uses more power.']].map(([v, ic, t, d]) => `<button class="choice ${st.level === v ? 'on' : ''}" data-l="${v}">${icon(ic, 'lg')}<b>${t}${v === 'balanced' ? ' <span class="badge ok">Recommended</span>' : ''}</b><span class="muted small">${d}</span></button>`).join('')}</div>
-      ${S.session.signedIn ? '' : `<p class="center dim small" style="margin-top:14px">Have a paid plan? <button class="btn ghost sm" id="onb-login">Log in</button> to include its tweaks.</p>`}`;
+      ${S.session.signedIn ? '' : `<p class="center dim small" style="margin-top:14px">Everything is free. <button class="btn ghost sm" id="onb-login">Log in</button> with your Woof account to use every tweak.</p>`}`;
     if (st.step === 3) {
       const list = ids();
       body = `<h1 class="center" style="font-size:26px">Ready to apply ${plural(list.length, 'tweak')}</h1><p class="muted center" style="margin:6px 0 16px">Here's everything that will change. Nothing happens until you click Apply.</p>
