@@ -53,6 +53,6 @@ linux:
 
 publish:
   provider: github
-  owner: oliveman-au
+  owner: woof-au
   repo: woof-tweaks
   releaseType: release
