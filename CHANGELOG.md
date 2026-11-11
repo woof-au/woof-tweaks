@@ -1,3 +1,10 @@
+# 1.2.6 — more games, snappier Windows
+
+- 9 new game profiles: Baldur's Gate 3, Path of Exile 2, Sea of Thieves, Hunt: Showdown 1896, Warframe, Halo Infinite, Forza Horizon 5, Phasmophobia and Monster Hunter Wilds — each with the right tweaks and recommended in-game settings.
+- New Windows tweak: No startup delay for apps — Discord, Steam and other startup apps open straight away after sign-in.
+- New Windows tweak: Snappier menus — right-click and Start sub-menus open faster.
+- Like every tweak, both save the original value first and Revert puts it back exactly.
+
 # 1.2.5 — free for everyone
 
 - Woof Tweaks is free: every tweak, game profile and tool is included with your free Woof account. No plans, payments or subscriptions.

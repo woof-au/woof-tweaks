@@ -1,0 +1,103 @@
+{
+  "id": "forzahorizon5",
+  "name": "Forza Horizon 5",
+  "short": "Forza Horizon 5",
+  "genre": "Racing",
+  "colors": [
+    "#ff4f9a",
+    "#121018"
+  ],
+  "competitive": false,
+  "antiCheat": null,
+  "platforms": [
+    "win32",
+    "linux"
+  ],
+  "detect": {
+    "steam": 1551360,
+    "process": [
+      "ForzaHorizon5.exe"
+    ],
+    "exe": [
+      "ForzaHorizon5.exe"
+    ]
+  },
+  "tweaks": {
+    "win32": [
+      "win-plan-woof",
+      "win-game-mode",
+      "win-game-dvr-off",
+      "win-game-bar-off",
+      "win-fso-off",
+      "win-visual-fx",
+      "win-transparency-off",
+      "win-background-apps-off",
+      "win-max-refresh",
+      "win-ads-off",
+      "win-sticky-keys-off",
+      "win-hibernate-off",
+      "win-tdr-delay",
+      "win-fth-off",
+      "win-pcie-aspm-off",
+      "win-sysmain-off",
+      "win-compat-telemetry-off",
+      "win-update-no-restart",
+      "win-hags-on"
+    ],
+    "linux": [
+      "linux-governor-performance",
+      "linux-epp-performance",
+      "linux-turbo-on",
+      "linux-power-profile",
+      "linux-gamemode",
+      "linux-max-map-count",
+      "linux-split-lock-off",
+      "linux-swappiness",
+      "linux-io-nvme-none",
+      "linux-mesa-cache-size",
+      "linux-nvidia-powermizer",
+      "linux-file-limits"
+    ]
+  },
+  "extras": [
+    "fso",
+    "gpuPreference",
+    "priority",
+    "shaderCache",
+    "defender"
+  ],
+  "launchOptions": {
+    "linux": "gamemoderun %command%"
+  },
+  "settings": [
+    {
+      "setting": "Display mode",
+      "value": "Fullscreen",
+      "why": "Best frame pacing."
+    },
+    {
+      "setting": "Upscaling",
+      "value": "DLSS or FSR — Quality",
+      "why": "Higher FPS at high resolutions."
+    },
+    {
+      "setting": "Ray tracing",
+      "value": "Off",
+      "why": "Large FPS cost, mostly only visible in Forzavista."
+    }
+  ],
+  "regions": [
+    "us-east-1",
+    "us-west-2",
+    "sa-east-1",
+    "eu-west-1",
+    "eu-central-1",
+    "ap-southeast-1",
+    "ap-southeast-2",
+    "ap-northeast-1",
+    "ap-south-1",
+    "me-south-1"
+  ],
+  "notes": [],
+  "mono": "FH5"
+}

@@ -265,6 +265,18 @@ module.exports = [
     changes: [dw(ADV, 'IconsOnly', 1), dw(`${HKCU}Control Panel\\Desktop`, 'SmoothScroll', 0)], tags: ['explorer', 'low end'],
   }),
   T({
+    id: 'win-startup-delay-off', name: 'No startup delay for apps', category: 'cpu', reboot: 'signout',
+    desc: 'Startup apps open straight away after you sign in.',
+    long: { what: 'Sets StartupDelayInMSec = 0 for your account.', why: 'Windows waits a few seconds before starting your startup apps; this removes the wait so Discord, Steam and friends are ready sooner.', risk: 'Safe. On very slow PCs the desktop can feel busy for a moment right after sign-in.' },
+    changes: [dw(`${HKCU}Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Serialize`, 'StartupDelayInMSec', 0)], tags: ['startup', 'boot'],
+  }),
+  T({
+    id: 'win-menu-delay', name: 'Snappier menus', category: 'cpu', reboot: 'signout',
+    desc: 'Menus and sub-menus open faster.',
+    long: { what: 'Sets MenuShowDelay to 100 ms (Windows default is 400 ms).', why: 'Makes right-click and Start sub-menus feel instant. Not an FPS tweak.', risk: 'Cosmetic only. Takes effect after you sign out.' },
+    changes: [sz(`${HKCU}Control Panel\\Desktop`, 'MenuShowDelay', '100')], tags: ['desktop', 'snappy'],
+  }),
+  T({
     id: 'win-sysmain-off', name: 'Turn off SysMain (Superfetch)', category: 'cpu', risk: 'moderate',
     desc: 'Stops Windows pre-loading apps into RAM in the background.',
     long: { what: 'Sets the SysMain service to Disabled and stops it.', why: 'On PCs with an SSD, SysMain\'s background disk/RAM activity can cause stutter while gaming and gives little benefit.', risk: 'On a hard drive (HDD) it genuinely speeds up app launches — keep it on there.' },

@@ -1,0 +1,110 @@
+{
+  "id": "pathofexile2",
+  "name": "Path of Exile 2",
+  "short": "Path of Exile 2",
+  "genre": "Action RPG",
+  "colors": [
+    "#b5852f",
+    "#120d0a"
+  ],
+  "competitive": false,
+  "antiCheat": null,
+  "platforms": [
+    "win32",
+    "linux"
+  ],
+  "detect": {
+    "steam": 2694490,
+    "process": [
+      "PathOfExileSteam.exe",
+      "PathOfExile.exe"
+    ],
+    "exe": [
+      "PathOfExileSteam.exe",
+      "PathOfExile.exe"
+    ]
+  },
+  "tweaks": {
+    "win32": [
+      "win-plan-woof",
+      "win-game-mode",
+      "win-game-dvr-off",
+      "win-game-bar-off",
+      "win-fso-off",
+      "win-visual-fx",
+      "win-transparency-off",
+      "win-background-apps-off",
+      "win-max-refresh",
+      "win-ads-off",
+      "win-sticky-keys-off",
+      "win-hibernate-off",
+      "win-tdr-delay",
+      "win-fth-off",
+      "win-pcie-aspm-off",
+      "win-sysmain-off",
+      "win-compat-telemetry-off",
+      "win-update-no-restart",
+      "win-hags-on"
+    ],
+    "linux": [
+      "linux-governor-performance",
+      "linux-epp-performance",
+      "linux-turbo-on",
+      "linux-power-profile",
+      "linux-gamemode",
+      "linux-max-map-count",
+      "linux-split-lock-off",
+      "linux-swappiness",
+      "linux-io-nvme-none",
+      "linux-mesa-cache-size",
+      "linux-nvidia-powermizer",
+      "linux-file-limits"
+    ]
+  },
+  "extras": [
+    "fso",
+    "gpuPreference",
+    "priority",
+    "shaderCache",
+    "defender"
+  ],
+  "launchOptions": {
+    "linux": "gamemoderun %command%"
+  },
+  "settings": [
+    {
+      "setting": "Renderer",
+      "value": "Vulkan (try DirectX 12 if you stutter)",
+      "why": "Pick whichever gives steadier frames on your PC."
+    },
+    {
+      "setting": "Engine multithreading",
+      "value": "On",
+      "why": "Spreads work across your CPU cores — big help in busy maps."
+    },
+    {
+      "setting": "Upscaling",
+      "value": "DLSS or FSR — Quality",
+      "why": "More FPS in heavy fights."
+    },
+    {
+      "setting": "Global illumination",
+      "value": "Low",
+      "why": "Costly lighting effect with little gameplay value."
+    }
+  ],
+  "regions": [
+    "us-east-1",
+    "us-west-2",
+    "sa-east-1",
+    "eu-west-1",
+    "eu-central-1",
+    "ap-southeast-1",
+    "ap-southeast-2",
+    "ap-northeast-1",
+    "ap-south-1",
+    "me-south-1"
+  ],
+  "notes": [],
+  "mono": "PoE2"
+}

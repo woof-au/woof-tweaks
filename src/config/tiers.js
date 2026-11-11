@@ -27,6 +27,7 @@ const TWEAKS = {
   'win-visual-fx': 'good', 'win-explorer-light': 'plus', 'win-background-apps-off': 'plus', 'win-fax-off': 'plus',
   'win-sysmain-off': 'plus', 'win-prefetch-off': 'plus', 'win-search-index-off': 'plus', 'win-edge-background-off': 'plus',
   'win-print-spooler-off': 'plus', 'win-maps-broker-off': 'plus',
+  'win-startup-delay-off': 'good', 'win-menu-delay': 'good',
   'win-memory-compression-off': 'pro', 'win-pagefile-fixed': 'pro', 'win-ndu-off': 'pro', 'win-system-responsiveness': 'pro', 'win-priority-separation': 'pro',
   // ── Windows · GPU
   'win-max-refresh': 'plus',

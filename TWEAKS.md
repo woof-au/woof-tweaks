@@ -7,7 +7,7 @@ Every tweak snapshots the exact original value before changing it, and Revert re
 
 | OS | Good | Plus | Pro | Ultra | Max | Total |
 |---|---|---|---|---|---|---|
-| Windows | 8 | 58 | 19 | 4 | 7 | **96** |
+| Windows | 10 | 58 | 19 | 4 | 7 | **98** |
 | macOS | 4 | 16 | 2 | 2 | 0 | **24** |
 | Linux | 3 | 24 | 9 | 3 | 0 | **39** |
 | ChromeOS (Linux container) | 0 | 5 | 0 | 0 | 0 | **5** |
@@ -44,6 +44,8 @@ Plus per-game tweaks on Windows (fullscreen flag, GPU preference, High priority,
 | **Turn off Memory Integrity (HVCI) & VBS** <br><sub>`win-hvci-off` · fps</sub> | Max | advanced | yes | restart | Turns off Core Isolation → Memory Integrity and virtualization-based security. |
 | **Lighter visual effects** <br><sub>`win-visual-fx` · cpu</sub> | Good | safe | — | sign out | Switches Visual Effects to Custom and turns off minimise/maximise animation, taskbar animations, translucent selection and icon-label shadows. |
 | **Lighter File Explorer** <br><sub>`win-explorer-light` · cpu</sub> | Plus | safe | — | sign out | Shows icons instead of thumbnails and turns off smooth scrolling. |
+| **No startup delay for apps** <br><sub>`win-startup-delay-off` · cpu</sub> | Good | safe | — | sign out | Sets StartupDelayInMSec = 0 for your account. |
+| **Snappier menus** <br><sub>`win-menu-delay` · cpu</sub> | Good | safe | — | sign out | Sets MenuShowDelay to 100 ms (Windows default is 400 ms). |
 | **Turn off SysMain (Superfetch)** <br><sub>`win-sysmain-off` · cpu</sub> | Plus | moderate | yes | — | Sets the SysMain service to Disabled and stops it. |
 | **Turn off Prefetch** <br><sub>`win-prefetch-off` · cpu</sub> | Plus | moderate | yes | restart | Sets EnablePrefetcher = 0. |
 | **Stop Store apps running in the background** <br><sub>`win-background-apps-off` · cpu</sub> | Plus | safe | — | — | Turns off "Let apps run in the background" for Store apps. |
@@ -119,7 +121,7 @@ Plus per-game tweaks on Windows (fullscreen flag, GPU preference, High priority,
 
 **Guides:** NVIDIA Control Panel: best 3D settings · AMD Software (Adrenalin): best settings · Intel graphics: best settings · G-Sync / FreeSync done right · Turn off in-game overlays · Windows Defender and games · BIOS settings worth checking · Monitor setup · Fix audio crackle and DPC latency · Visibility presets (Valorant / CS2) · HDR setup · Sharper text (ClearType) · Night light off while gaming · Keep drivers up to date · Pause Windows Update for a tournament · Cloud gaming (GeForce NOW / Xbox Cloud) · Wi-Fi for gaming
 
-**Game profiles (31):** General (all games) (Good) · Apex Legends (Good) · Call of Duty (Black Ops / MW) (Good) · Counter-Strike 2 (Good) · Fortnite (Good) · League of Legends (Good) · Minecraft (Good) · Roblox (Good) · Valorant (Good) · Call of Duty: Warzone (Plus) · Dota 2 (Plus) · Fall Guys (Plus) · Genshin Impact (Plus) · GTA V / GTA Online (Plus) · Marvel Rivals (Plus) · Overwatch 2 (Plus) · PUBG: Battlegrounds (Plus) · Rainbow Six Siege X (Plus) · Rocket League (Plus) · Team Fortress 2 (Plus) · The Finals (Plus) · Cyberpunk 2077 (Ultra) · Deadlock (Ultra) · Delta Force (Ultra) · Destiny 2 (Ultra) · Elden Ring (Ultra) · Escape from Tarkov (Ultra) · Helldivers 2 (Ultra) · Lethal Company (Ultra) · Palworld (Ultra) · Rust (Ultra)
+**Game profiles (40):** General (all games) (Good) · Apex Legends (Good) · Call of Duty (Black Ops / MW) (Good) · Counter-Strike 2 (Good) · Fortnite (Good) · League of Legends (Good) · Minecraft (Good) · Roblox (Good) · Valorant (Good) · Call of Duty: Warzone (Plus) · Dota 2 (Plus) · Fall Guys (Plus) · Genshin Impact (Plus) · GTA V / GTA Online (Plus) · Marvel Rivals (Plus) · Overwatch 2 (Plus) · PUBG: Battlegrounds (Plus) · Rainbow Six Siege X (Plus) · Rocket League (Plus) · Team Fortress 2 (Plus) · The Finals (Plus) · Baldur's Gate 3 (Ultra) · Cyberpunk 2077 (Ultra) · Deadlock (Ultra) · Delta Force (Ultra) · Destiny 2 (Ultra) · Elden Ring (Ultra) · Escape from Tarkov (Ultra) · Forza Horizon 5 (Ultra) · Halo Infinite (Ultra) · Helldivers 2 (Ultra) · Hunt: Showdown 1896 (Ultra) · Lethal Company (Ultra) · Monster Hunter Wilds (Ultra) · Palworld (Ultra) · Path of Exile 2 (Ultra) · Phasmophobia (Ultra) · Rust (Ultra) · Sea of Thieves (Ultra) · Warframe (Ultra)
 
 ## macOS
 
@@ -204,7 +206,7 @@ Plus per-game tweaks on Windows (fullscreen flag, GPU preference, High priority,
 
 **Guides:** Turn off in-game overlays · BIOS settings worth checking · Monitor setup · Keep drivers up to date · Steam launch options on Linux · Proton-GE (community Proton) · AMD GPU profiles with CoreCtrl · Compositor and fullscreen games · Cloud gaming (GeForce NOW / Xbox Cloud) · Wi-Fi for gaming
 
-**Game profiles (15):** General (all games) (Good) · Counter-Strike 2 (Good) · Minecraft (Good) · Dota 2 (Plus) · Marvel Rivals (Plus) · Overwatch 2 (Plus) · Rocket League (Plus) · Team Fortress 2 (Plus) · The Finals (Plus) · Cyberpunk 2077 (Ultra) · Deadlock (Ultra) · Elden Ring (Ultra) · Helldivers 2 (Ultra) · Lethal Company (Ultra) · Palworld (Ultra)
+**Game profiles (24):** General (all games) (Good) · Counter-Strike 2 (Good) · Minecraft (Good) · Dota 2 (Plus) · Marvel Rivals (Plus) · Overwatch 2 (Plus) · Rocket League (Plus) · Team Fortress 2 (Plus) · The Finals (Plus) · Baldur's Gate 3 (Ultra) · Cyberpunk 2077 (Ultra) · Deadlock (Ultra) · Elden Ring (Ultra) · Forza Horizon 5 (Ultra) · Halo Infinite (Ultra) · Helldivers 2 (Ultra) · Hunt: Showdown 1896 (Ultra) · Lethal Company (Ultra) · Monster Hunter Wilds (Ultra) · Palworld (Ultra) · Path of Exile 2 (Ultra) · Phasmophobia (Ultra) · Sea of Thieves (Ultra) · Warframe (Ultra)
 
 ## ChromeOS (Linux container)
 
