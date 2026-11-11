@@ -24,7 +24,7 @@ import java.security.MessageDigest
  * time (or on older Android), Android shows its usual "Update this app?" screen.
  */
 object Updater {
-    private const val API = "https://api.github.com/repos/oliveman-au/woof-tweaks/releases/latest"
+    private const val API = "https://api.github.com/repos/woof-au/woof-tweaks/releases/latest"
     private val APK = Regex("^Woof-Tweaks-Android-([0-9]+\\.[0-9]+\\.[0-9]+)\\.apk$")
 
     class Available(val version: String, val apkUrl: String, val shaUrl: String, val size: Long)
@@ -54,8 +54,8 @@ object Updater {
         if (cmpVersion(version, BuildConfig.VERSION_NAME) <= 0) return null
         val url = apk.getString("browser_download_url")
         val shaUrl = sha.getString("browser_download_url")
-        if (!url.startsWith("https://github.com/oliveman-au/woof-tweaks/releases/download/") ||
-            !shaUrl.startsWith("https://github.com/oliveman-au/woof-tweaks/releases/download/")) return null
+        if (!url.startsWith("https://github.com/woof-au/woof-tweaks/releases/download/") ||
+            !shaUrl.startsWith("https://github.com/woof-au/woof-tweaks/releases/download/")) return null
         return Available(version, url, shaUrl, apk.optLong("size", 0))
     }
 
