@@ -15,7 +15,7 @@ const { parseLatestYml, cmpVersion } = require('./update-feed');
 const { withUpdateResponse, saveVerifiedUpdate } = require('./update-transfer');
 
 const IS_MAC = process.platform === 'darwin';
-const REPO = 'https://github.com/oliveman-au/woof-tweaks/releases';
+const REPO = 'https://github.com/woof-au/woof-tweaks/releases';
 const AWAY_MS = 3 * 60_000; // window hidden / minimised / unfocused this long counts as "not using it"
 const IDLE_SEC = 5 * 60; // or no keyboard/mouse input on the PC for this long
 
@@ -153,7 +153,7 @@ async function macCheck(store) {
   let critical = /\[critical\]/i.test(info.notes);
   if (!macSupported()) {
     // Can't replace itself: tell the user (and insist when the release notes say [critical]).
-    try { critical = /\[critical\]/i.test((await fetchUpdate('https://api.github.com/repos/oliveman-au/woof-tweaks/releases/latest', 15_000, r => r.json())).body || ''); } catch { /* keep */ }
+    try { critical = /\[critical\]/i.test((await fetchUpdate('https://api.github.com/repos/woof-au/woof-tweaks/releases/latest', 15_000, r => r.json())).body || ''); } catch { /* keep */ }
     setState({ status: 'available', version: info.version, critical, manual: true });
     return;
   }
