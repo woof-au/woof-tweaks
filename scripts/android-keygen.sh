@@ -5,7 +5,7 @@
 set -euo pipefail
 umask 077
 DIR="$HOME/.woof-secrets/android"
-REPO="oliveman-au/woof-tweaks"
+REPO="woof-au/woof-tweaks"
 mkdir -p "$DIR"
 chmod 700 "$HOME/.woof-secrets" "$DIR"
 if [ ! -f "$DIR/woof-android.p12" ]; then
