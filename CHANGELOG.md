@@ -1,3 +1,9 @@
+# 1.2.5 — free for everyone
+
+- Woof Tweaks is free: every tweak, game profile and tool is included with your free Woof account. No plans, payments or subscriptions.
+- Sign-in is still required to use the app; backups and restore stay available while signed out.
+- Updates now come from the renamed woof-au GitHub account (Android: install this version once manually from woof-services.stream/tweaks; later updates install automatically).
+
 # 1.2.0 — lifetime plans [critical]
 
 - All Tweaks plans are now one-time USD purchases: Good $5, Plus $10, Pro $15, Ultra $30, Max $100.
